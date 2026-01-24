@@ -1,48 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 /* 
 
-.scroll-bar {
-  background: #0d6efd;  
-  color: #fff;
-  overflow: hidden;
-  white-space: nowrap;
-  height: 35px;
-  display: flex;
-  align-items: center;
-}
-
-.scroll-text {
-  display: inline-block;
-  padding-left: 100%;
-  animation: scroll-left 18s linear infinite;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}  */
-
-
-
-
-
-.fixed-brochure-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 9999;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  background-color: #f05819 !important;
-  color: #fff !important;
-  font-family: "Poppins"!important;
-}
-
 /* Mobile friendly */
 @media (max-width: 576px) {
   .fixed-brochure-btn {
@@ -53,20 +11,18 @@
   }
 }
 
-
-
 .background-page {
      min-height: 90vh;
   background: #000;
 }
-/* ===== DESKTOP (Exact size) ===== */
+/* desktop logo*/
 .newimagesrc img {
-  height: 120px;        /* exact desktop height */
-  width: auto;          /* keeps 700.8px width */
-  max-width: 100%;      /* prevents overflow */
+  height: 120px;       
+  width: auto;         
+  max-width: 100%;     
 }
 
-/* ===== Medium screens (≤ 992px) ===== */
+/* Medium screens (≤ 992px) */
 @media (max-width: 992px) {
   .newimagesrc img {
     height: 100px;
@@ -86,9 +42,6 @@
     height: 70px;
   }
 }
-
-
-
 
 
 /*Nav bar */
@@ -124,7 +77,7 @@
   justify-content: flex-end;
 }
 
-/* 🔥 WHEN SCREEN IS SMALL (THIS IS THE FIX) */
+/* WHEN SCREEN IS SMALL (THIS IS THE FIX) */
 @media (max-width: 1184px) {
 
   /* Logo takes full row */
@@ -163,40 +116,7 @@
   }
 }
 
-/* 
 
-
-.navbar-brand-img {
-  height: 120px;     
-  width: 750px;       
-  max-width: 900px;
-  padding-left: 32px;
-}
-
-
-@media (max-width: 992px) {
-  .navbar-brand-img {
-    height: 100px;
-    width: auto;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .navbar-brand-img {
-    height: 85px;
-    width: auto;
-  }
-}
-
-
-@media (max-width: 576px) {
-  .navbar-brand-img {
-    height: 65px;
-    width: auto;
-  }
-}
-  */
 
 .form-background {
     background-color: white;
@@ -1226,10 +1146,6 @@ background-color: #e4405f;
 }
 
 
-
-
-
-
 /* study */
 
 .aditya-container {
@@ -1278,9 +1194,13 @@ background-color: #e4405f;
 
 .aditya-image img {
   width: 100%;
-  height: auto;
+  /* height: auto; */
+  height: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  object-position: center;
+   display: block;
 }
 
 .study_font {
@@ -1302,23 +1222,39 @@ background-color: #e4405f;
   flex: 1;
   overflow: hidden;
   position: relative;
+   overflow: hidden;
+   object-fit: cover;
+  object-position: center;
+   display: block;
 }
 
 @keyframes zoomMove {
   0% {
-    transform: scale(1) translate(0, 0);
-  }
-  50% {
-    transform: scale(1.08) translate(-10px, -5px);
+    transform: scale(1);
+    object-position: center;
   }
   100% {
-    transform: scale(1.2) translate(-20px, -10px);
+    transform: scale(1.15);
+    object-position: center;
+  }
+}
+@media (max-width: 767px) {
+  .image-section_aditya img {
+    animation: zoomMoveMobile 10s ease-in-out infinite alternate;
   }
 
-  /* 100% {
-    transform: scale(1.18) translate(-60px, -40px);
-  } */
+  @keyframes zoomMoveMobile {
+    0% {
+      transform: scale(1);
+      object-position: center;
+    }
+    100% {
+      transform: scale(1.08); /* softer zoom */
+      object-position: center;
+    }
+  }
 }
+
 
 .campus-image_aditya {
   width: 100%;
