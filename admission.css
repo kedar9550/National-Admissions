@@ -3,6 +3,22 @@
 
 
 
+.titletext {
+  font-size: 22px;
+  font-weight: 500;
+  color: white;
+
+  /* FIXES */
+  text-align: left;          /* stop stretching */
+  /* white-space: normal;        */
+  line-height: 1.3;          /* reduce vertical gap */
+  letter-spacing: 0.3px;     /* tighter letters */
+  word-spacing: 1px;         /* control space between words */
+  max-width: 320px;          /* force nice 2-line layout */
+}
+
+
+
 .fixed-brochure-btn {
   position: fixed;
   bottom: 20px;
@@ -1915,6 +1931,7 @@ margin-bottom: 10px;
     /* border-radius: 15px;  */
     /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  */
     transition: all 0.3s ease;
+    margin-bottom: 5px;
   }
   
   .slider-image:hover {
