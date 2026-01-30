@@ -3,7 +3,7 @@
 
 .placement_note {
     font-size: 13px;
-    color: #ffffff;
+    color: #ffffff !important;
     margin-top: -6px;
 }
 
