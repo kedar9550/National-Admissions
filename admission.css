@@ -1691,6 +1691,16 @@ margin-bottom: 10px;
   }
 }
 
+
+@media (max-width: 490px){
+  .mobilefooter{
+    margin-left: -25px;
+  }
+
+}
+  
+
+
 .line_foooter {
   border: 1px solid #fff;
   border-radius: 10px;
@@ -1860,10 +1870,10 @@ margin-bottom: 10px;
   .footer_down p {
     margin: 8px;
   }
-
+/* 
   .contact-info {
     gap: 0px !important;
-  }
+  } */
 
   .footer_maile {
     /* margin-left: -85px */
