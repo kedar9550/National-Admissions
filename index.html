@@ -595,7 +595,7 @@
     <!-- Placements -->
 
 
-    <div class="background-image-placements">
+    <div class="background-image-placements" id="placements-section">
         <center>
 
              <div class="col-5 col-md-2">
@@ -612,11 +612,11 @@
                 <div class="col-md-3">
                     <center>
                         <img src="./images/Group 482.png" alt="Highest Package Icon" />
-                        <h4 class="placement-heading" id="highest-package">39.60 LPA</h4>
+                        <h4 class="placement-heading counter" id="highest-package" data-target="39.60">39.60 LPA</h4>
                         <p class="placement_name">Highest Package</p>
                         <br /><br />
                         <img src="./images/Group 482.png" alt="Average Package Icon" />
-                        <h4 class="placement-heading" id="average-package">4.11 LPA</h4>
+                        <h4 class="placement-heading counter" data-target="4.11" id="average-package">4.11 LPA</h4>
                         <p class="placement_name">Average Package</p>
                     </center>
                 </div>
@@ -629,12 +629,12 @@
                 <div class="col-md-4">
                     <center>
                         <img src="./images/Group 484.png" alt="Students Placed Icon" />
-                        <h4 class="placement-heading" id="students-placed">3024+</h4>
+                        <h4 class="placement-heading counter" data-target="3024" id="students-placed">3024+</h4>
                         <p class="placement_name">Students Placed in 2025</p>
 
                         <br /><br />
                         <img src="./images/Group 486.png" alt="Companies Icon" />
-                        <h4 class="placement-heading" id="companies">260+</h4>
+                        <h4 class="placement-heading counter" data-target="260" id="companies">260+</h4>
                         <p class="placement_name">Companies <br /> (100+ International) in 2025</p>
                     </center>
                 </div>
@@ -649,14 +649,14 @@
 
                         
                             <img src="./images/Group 484.png" alt="Students Placed Icon" />
-                            <h4 class="placement-heading mb-0">1900+</h4>
+                            <h4 class="placement-heading mb-0 counter" data-target="1900">1900+</h4>
                             <p class="placement_name mb-0">Students Placed in 2026*</p>
                             <p class="placement_note fw-bold">Still Counting...</p>
                         
                         <br /><br />
                         
                             <img src="./images/Group 488.png" alt="Placement Assistance Icon" />
-                            <h4 class="placement-heading" id="placement-assistance">100%</h4>
+                            <h4 class="placement-heading counter" data-target="100" id="placement-assistance">100%</h4>
                             <p class="placement_name">Placement Assistance</p>
                         
 
@@ -1012,7 +1012,7 @@
                 <ul>
                     <li class="link_a"><a href="#About Aditya University">About Aditya University</a></li>
                     <li class="link_a"><a href="#Why Join Aditya University">Why Join Aditya University</a></li>
-                    <li class="link_a"><a href="./images/shocalmedia/fee_Structure.pdf">Fee Structure & Scholarships</a>
+                    <li class="link_a"><a href="./images/shocalmedia/fee_Structure.pdf" target="_blank" rel="noopener noreferrer">Fee Structure & Scholarships</a>
                     </li>
                     <li class="link_a"><a href="#Programs">Programs</a></li>
                 </ul>
@@ -1045,17 +1045,7 @@
             </div>
         </center>
     </div>
-
-
-
-
-
-
-
-</body>
-
-</html>
-
+    
 <script>
     // Basic JavaScript for toggling sections
     const links = document.querySelectorAll('.offerd');
@@ -1107,9 +1097,61 @@
     });
 
     // CountUp.js functionality for animated number updates
-    new CountUp('highest-package', 0, 35.36, 2, 7.5).start();
-    new CountUp('average-package', 0, 4.11, 2, 7.5).start();
-    new CountUp('students-placed', 0, 3024, 0, 7.5).start();
-    new CountUp('companies', 0, 260, 0, 7.5).start();
-    new CountUp('placement-assistance', 0, 100, 0, 7.5).start();
+
+    //new CountUp('highest-package', 0, 35.36, 2, 7.5).start();
+    //new CountUp('average-package', 0, 4.11, 2, 7.5).start();
+    //new CountUp('students-placed', 0, 3024, 0, 7.5).start();
+    //new CountUp('companies', 0, 260, 0, 7.5).start();
+    //new CountUp('placement-assistance', 0, 100, 0, 7.5).start();
 </script>
+
+
+<script>
+const counters = document.querySelectorAll('.counter');
+let hasAnimated = false; // prevents repeating
+
+function runCounters() {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const suffix = counter.innerText.replace(/[0-9.]/g, '');
+    const isDecimal = target % 1 !== 0;
+
+    let count = 0;
+    const speed = 500;
+
+    function update() {
+      const increment = target / speed;
+
+      if (count < target) {
+        count += increment;
+        counter.innerText = isDecimal
+          ? count.toFixed(2) + suffix
+          : Math.ceil(count) + suffix;
+
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target + suffix;
+      }
+    }
+
+    update();
+  });
+}
+
+const section = document.getElementById('placements-section');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !hasAnimated) {
+      runCounters();
+      hasAnimated = true;
+    }
+  });
+}, { threshold: 0.4 }); // triggers when 40% visible
+
+observer.observe(section);
+</script>
+
+</body>
+
+</html>
